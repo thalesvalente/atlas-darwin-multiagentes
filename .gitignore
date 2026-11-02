@@ -1,0 +1,17 @@
+# Dados locais e segredos nunca devem ser versionados neste site público
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+node_modules/
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+preview-*.png
+_test_notes.md
