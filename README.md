@@ -1,35 +1,46 @@
 # Atlas DARWIN — Biblioteca científica de orquestração multiagente
 
-Site estático dedicado à pesquisa sobre agentes de IA para engenharia de software.
+Portal acadêmico estático em português sobre orquestração de agentes de IA e engenharia de software.
 
-## Conteúdo
+**Site:** https://thalesvalente.github.io/atlas-darwin-multiagentes/
 
-- Biblioteca de 15 publicações, com links acadêmicos e PDFs de origem.
-- Arquitetura didática de coordenador único, fan-out/fan-in e duas ondas.
-- Trilha de quatro semanas, fichamentos, filtros, quiz e exportação.
-- Proposta de pesquisa com baseline de agente único, métricas de qualidade e custo.
+## Estrutura V4.2
 
-**Distinguir evidência de proposta:** “DARWIN / two-wave” é nomenclatura de trabalho, não denominação padronizada pela literatura. Dados bibliográficos estão abreviados e devem ser conferidos no publicador antes de citação formal.
+- `index.html`: abertura visual aprovada e arquitetura DARWIN antes das recomendações de leitura.
+- `arquitetura.html`: conceitos, padrões de coordenação, fan-out/fan-in, gates e limites.
+- `biblioteca.html`: catálogo filtrável de 15 publicações científicas.
+- `artigos/*.html`: 15 fichas de estudo com fontes acadêmicas originais.
+- `trilha.html`: percurso de quatro semanas.
+- `metodologia.html`, `glossario.html`, `comparar.html`: pesquisa, vocabulário e comparação de abordagens.
+- `caderno.html`: anotações pessoais e exportação.
+- `questionario.html`: autoavaliação didática.
+- `sobre.html`: escopo e observações de proveniência.
+- `historico/v3.html`: versão anterior preservada, além do histórico de commits Git.
+- `assets/site.css` e `assets/site.js`: arquivos-fonte de estilos e interações; as páginas HTML da V4.2 também incorporam recursos necessários para visualização independente.
 
-## GitHub Pages — sem workflow adicional
+## Publicação
 
-1. Crie um repositório **público** `thalesvalente/atlas-darwin-multiagentes`, com branch `main`. Não use o repositório do HidroFloresta.
-2. Publique `index.html`, `.nojekyll`, `README.md` e `catalogo.json` na raiz do branch `main`.
-3. Em **Settings → Pages → Build and deployment**, escolha **Deploy from a branch**, selecione `main` e `/(root)`, depois **Save**.
-4. Consulte em **Settings → Pages** o endereço publicado; o padrão para um projeto é `https://thalesvalente.github.io/atlas-darwin-multiagentes/` (endereço previsto; confirmar após o deploy).
+GitHub Pages usa a branch `main`, pasta `/(root)`, com `.nojekyll`. O site é estático e não precisa de backend, build Node, banco de dados nem fornecedores externos de aplicação.
 
-Referência oficial: https://docs.github.com/pt/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+Para testar em HTTP localmente, na raiz do repositório:
 
-## Teste local
+```bash
+python -m http.server 8000
+```
 
-Abra `index.html` no navegador. Não são necessários Node, Bun, npm, servidor ou provedor de banco.
+Abra http://localhost:8000/.
 
-Para um teste HTTP opcional (com Python instalado): `python -m http.server 8000` na raiz e abra `http://localhost:8000`.
+## Ciência, privacidade e limitações
 
-## Privacidade e direitos
+- “DARWIN / two-wave” é nomenclatura de projeto, **não** uma arquitetura científica formalmente padronizada.
+- O gráfico inicial é um **esquema conceitual**, não resultado de experimento nem promessa de ganhos mensurados.
+- As referências bibliográficas podem estar abreviadas; confira os documentos e publicadores originais antes de citações formais.
+- O site não distribui os PDFs integrais de terceiros; encaminha às fontes originais.
+- Anotações e progresso de leitura usam armazenamento local no navegador; exporte seus registros antes de limpar dados. Não existe sincronização ou conta de usuário.
+- Não há analytics, scripts de terceiros, e-mails, segredos, `.env` ou dados internos do HidroFloresta neste repositório.
 
-- Este site não inclui chaves, cookies, e-mails, dados de usuários ou documentos privados do projeto HidroFloresta.
-- As notas de leitura ficam no `localStorage` do navegador. A exportação para Markdown é responsabilidade do leitor.
-- Textos integrais dos artigos não são redistribuídos; os links levam às fontes acadêmicas originais.
-- Não há rastreamento de analytics nem scripts de terceiros.
-- Não inclua `.env`, anexos privados ou artefatos internos ao publicar.
+## Preservação e reversão
+
+A V3 aprovada anteriormente foi preservada em `historico/v3.html` e no histórico Git. Para reverter uma publicação, crie um novo commit restaurando os arquivos do commit anterior, sem reescrever o histórico público.
+
+Os testes automatizados verificam estrutura, links, navegação, reflow, funções locais e alguns contrastes; não substituem avaliação de usabilidade com participantes ou certificação WCAG.

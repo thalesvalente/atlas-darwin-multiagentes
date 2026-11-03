@@ -1,19 +1,205 @@
 <!doctype html><html lang="pt-BR"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Atlas DARWIN: biblioteca científica de 15 artigos sobre orquestração de agentes, DAGs, software engineering e verificação independente.">
-<meta name="theme-color" content="#073e36"><meta name="color-scheme" content="light">
-<title>Atlas DARWIN — Biblioteca científica de orquestração multiagente</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>Portal de pesquisa · Atlas DARWIN</title>
+<meta name="description" content="Biblioteca científica de sistemas multiagentes com navegação por artigo, trilha, metodologia e caderno pessoal."><meta name="theme-color" content="#f6f7f4">
 <style>
-:root{--bg:#f3f6f2;--paper:#fff;--ink:#122f2a;--muted:#60736b;--brand:#08765b;--dark:#063d34;--line:#d9e6db;--soft:#e6f3e9;--gold:#deaa53}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:34px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}h1,h2,h3{line-height:1.2;letter-spacing:-.035em}h1{font-size:clamp(2.3rem,5vw,4.6rem);margin:16px 0 18px}h2{font-size:clamp(1.65rem,3vw,2.7rem);margin:0 0 12px}h3{font-size:1.15rem;margin:0 0 7px}p{margin:0 0 16px}a{color:var(--brand);text-decoration:none;font-weight:650}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}button:disabled{opacity:.55}code{background:var(--soft);border-radius:5px;padding:2px 5px;font:.85em ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
-.topbar{background:#fff;border-bottom:1px solid var(--line);padding:13px max(22px,calc((100vw - 1210px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--dark);font-size:1.07rem;font-weight:850;letter-spacing:-.045em}.logo-icon{background:var(--dark);color:#d9f6ca;padding:6px 12px;border-radius:11px;font-weight:800;font-size:1.25rem}.logo span:last-child small{display:block;color:var(--muted);font-size:.63rem;font-weight:600;letter-spacing:.1em}.nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.nav a{font-size:.82rem;color:#496158}.nav a:hover{color:var(--brand)}
-.wrap{max-width:1210px;margin:0 auto;padding:0 22px 90px}.hero{margin:28px 0 0;border-radius:28px;background:var(--dark);color:#fff;padding:clamp(30px,6vw,72px);position:relative;overflow:hidden;min-height:390px}.hero:before{content:'';position:absolute;width:460px;height:460px;right:-150px;top:-230px;border:1px solid #b9efdb55;border-radius:50%;box-shadow:0 0 0 75px #b9efdb0b,0 0 0 160px #b9efdb0a;pointer-events:none}.hero>*{position:relative}.overline{font-size:.75rem;font-weight:850;letter-spacing:.16em;text-transform:uppercase;color:#a9e6bc}.hero h1{max-width:790px}.hero p{max-width:740px;color:#d8e9e2;font-size:1.06rem}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:10px;padding:10px 17px;font-weight:750;font-size:.88rem;text-decoration:none}.btn-primary{background:#d9f1cc;color:#194431}.btn-outline{border-color:#7bb09d;color:#eef7f2}.btn:hover{text-decoration:none;filter:brightness(1.05)}.hero-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px}.stat b{font-size:1.8rem;letter-spacing:-.065em}.stat span{display:block;color:#b4d0c3;font-size:.75rem}
-.notice{background:#e8f3e9;border:1px solid #d0e6d4;border-radius:14px;padding:17px 22px;color:#315e48;margin:22px 0}.section{margin-top:76px;scroll-margin-top:30px}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px}.section-head .label{display:block;color:var(--brand);text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;font-weight:800;margin-bottom:9px}.section-head p{max-width:750px;color:var(--muted)}.three,.two,.weeks,.cards{display:grid;gap:16px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.two,.weeks,.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.panel,.paper-card,.week,.quiz-question{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px;min-width:0;box-shadow:0 9px 25px #0a322112}.panel p,.week p{color:var(--muted)}.panel .symbol{width:40px;height:40px;display:grid;place-items:center;background:var(--soft);border-radius:10px;font-weight:850;color:var(--brand);margin-bottom:15px}.article-tag{font-size:.69rem;color:var(--brand);font-weight:800;letter-spacing:.06em;text-transform:uppercase}.panel strong{color:var(--ink)}
-.arch{border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,#fff,#edf6ee);padding:26px;margin-top:18px}.arch-grid{max-width:760px;margin:auto;display:flex;flex-direction:column;gap:12px;align-items:center}.arch-node{padding:14px 18px;border:1px solid #bdd9c4;background:#f7fdf8;text-align:center;border-radius:12px;width:min(100%,440px)}.arch-node strong{display:block}.arch-node small{display:block;color:var(--muted)}.arch-node.highlight{color:#fff;background:#0e614c;border-color:#0e614c}.arch-node.highlight small{color:#c7e3d3}.arch-row{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.arch-row .arch-node{padding:11px 8px}.arrow{font-size:1.7rem;line-height:1;color:#8ab09c}.caption{color:var(--muted);font-size:.79rem;margin-top:13px}
-.progress{display:flex;align-items:center;gap:15px;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 23px;margin-bottom:15px}.progress strong{font-size:.9rem}.progress small{color:var(--muted);display:block}.bar{border-radius:20px;background:#e3ede6;width:155px;height:9px;overflow:hidden}.fill{height:100%;width:0;background:var(--brand);transition:width .2s}.count{font-weight:800}.week h3{margin-bottom:12px}.week ol{padding-left:18px}.week li{margin-bottom:7px}.week .task{background:var(--soft);padding:12px;border-radius:10px;font-size:.83rem}.week .task strong{display:block}.week .count{color:var(--brand);font-size:.75rem}
-.toolbar{display:grid;grid-template-columns:minmax(250px,2fr) minmax(135px,1fr) minmax(125px,1fr);gap:9px;margin-bottom:16px}.toolbar input,.toolbar select{width:100%;min-height:44px;border:1px solid #c7d9cd;border-radius:10px;padding:10px 13px;background:#fff;color:var(--ink)}.paper-count{color:var(--muted);font-size:.84rem;margin-bottom:15px}.paper-card h3{font-size:1.2rem;margin-top:11px}.paper-card p{color:#486058;font-size:.84rem}.paper-meta{font-size:.76rem;color:var(--muted);margin-bottom:12px}.paper-header{display:flex;align-items:center;justify-content:space-between;gap:10px}.pill{display:inline-flex;background:#e5f3e8;color:#16724e;border-radius:99px;font-weight:750;font-size:.71rem;padding:4px 9px}.readbtn{background:#fff;border:1px solid #b4d1bd;color:#0b7050;padding:6px 9px;font-size:.75rem;font-weight:760;border-radius:9px}.readbtn[aria-pressed=true]{background:var(--brand);color:#fff}.paper-card .links{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.links a{font-size:.79rem;padding:8px 11px;border-radius:9px;border:1px solid #bbd2c1}.links a:first-child{color:#fff;background:var(--brand);border-color:var(--brand)}details{border-top:1px solid var(--line);padding-top:12px}summary{cursor:pointer;color:var(--brand);font-size:.84rem;font-weight:750}.notes{width:100%;min-height:110px;resize:vertical;border:1px solid #b8ccc1;border-radius:10px;padding:11px;margin-top:10px;line-height:1.5;font-size:.85rem;color:var(--ink)}.small-note{font-size:.75rem;color:var(--muted)}.no-results{padding:30px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--muted);text-align:center}
-.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:15px;background:#fff}table{border-collapse:collapse;min-width:600px;width:100%}td,th{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.86rem}th{background:#e8f0e9;font-size:.75rem;text-transform:uppercase;letter-spacing:.07em}tr:last-child td{border:0}.research-question{font-size:1.02rem;background:#e5f2e9;border-left:4px solid var(--brand);padding:17px;border-radius:8px;margin-bottom:16px;font-weight:650}.steps li{margin:10px 0}.quiz-question{margin:12px 0;border-radius:14px}.quiz-question legend{font-weight:770;padding:0 4px}.quiz-question label{display:flex;gap:10px;align-items:flex-start;background:#f4f8f5;margin:8px 0;padding:9px 11px;border-radius:9px;font-size:.86rem;cursor:pointer}.quiz-question input{accent-color:var(--brand);margin-top:5px}.feedback{font-size:.82rem;color:var(--brand)}.quiz-score{font-weight:800;color:var(--brand)}.actionbtn{padding:10px 15px;border-radius:10px;border:1px solid #91b7a1;background:#fff;color:var(--brand);font-weight:800}.actionbtn.primary{background:var(--brand);color:#fff}.resources{display:flex;gap:9px;flex-wrap:wrap}.footer{margin-top:65px;padding-top:25px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}.footer a{font-weight:700}
-@media(max-width:900px){.topbar{flex-wrap:wrap}.nav{gap:11px}.three{grid-template-columns:1fr 1fr}}@media(max-width:680px){.wrap{padding:0 16px 65px}.hero{border-radius:18px;padding:26px}.hero h1{font-size:2.5rem}.section{margin-top:54px}.three,.two,.weeks,.cards,.arch-row{grid-template-columns:minmax(0,1fr)}.section-head{display:block}.toolbar{grid-template-columns:minmax(0,1fr)}.progress{flex-direction:column;align-items:flex-start}.hero-stats{gap:18px}.topbar{padding:12px 16px}.nav a{font-size:.75rem}.bar{width:100%}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fill{transition:none}}@media print{.topbar,.toolbar,.readbtn,.notes,details,.actionbtn,#quiz,.footer .actionbtn{display:none!important}.hero{background:#fff;color:#000;border:1px solid #aaa}.hero p,.hero .overline,.hero .stat span{color:#222}.section{margin-top:30px}.paper-card{break-inside:avoid}.cards{grid-template-columns:1fr 1fr}}
+/* Atlas DARWIN / Biblioteca — protótipo V4: portal editorial, sem rastreamento */
+:root{
+  color-scheme:light;
+  --bg:#f6f7f4;--surface:#fff;--ink:#19352f;--text:#344f49;--muted:#587168;
+  --line:#d9e4dc;--primary:#165d4a;--primary-dark:#0d4537;--primary-tint:#ebf4ee;
+  --soft:#f0f4f0;--warning:#fff7e9;--warning-line:#e8ce9f;--focus:#b37508;
+  --radius:13px;--shadow:0 6px 22px rgb(13 58 42 / 4%);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;font:1rem/1.67 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--primary);text-underline-offset:.17em}
+a:hover{color:var(--primary-dark)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.55}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skip-link{position:absolute;left:12px;top:-100px;z-index:99;background:#fff;color:var(--ink);padding:9px 14px;border-radius:7px}
+.skip-link:focus{top:10px}
+.container{width:min(100% - 44px,1160px);margin-inline:auto}
+.site-header{background:#fff;border-bottom:1px solid var(--line)}
+.header-inner{display:flex;justify-content:space-between;align-items:center;gap:28px;padding:18px 0}
+.identity{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);max-width:100%}
+.identity-mark{display:grid;place-items:center;width:41px;height:41px;flex:none;background:var(--primary-dark);color:#d3ebd7;border-radius:9px;font-size:1.15rem;font-weight:900}
+.identity-name{display:block;font-weight:850;letter-spacing:-.035em;line-height:1.1}
+.identity-sub{display:block;font-size:.72rem;color:var(--muted);font-weight:550;letter-spacing:.015em;margin-top:3px}
+.site-nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px 7px}
+.site-nav a{display:block;text-decoration:none;color:var(--text);font-size:.85rem;font-weight:620;padding:7px 10px;border-radius:8px}
+.site-nav a[aria-current="page"]{background:var(--primary-tint);color:var(--primary-dark);font-weight:780}
+.site-nav a:hover{background:var(--soft);color:var(--primary-dark)}
+.site-main{min-height:62vh;padding:32px 0 83px}
+.breadcrumbs{font-size:.78rem;color:var(--muted);margin-bottom:25px}
+.breadcrumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px 10px;padding:0;margin:0}
+.breadcrumbs li:not(:last-child):after{content:'›';padding-left:9px;color:#8da29a}
+.breadcrumbs a{color:var(--muted)}
+.eyebrow{font-size:.75rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:10px}
+h1,h2,h3,h4{line-height:1.24;letter-spacing:-.028em}
+h1{font-size:clamp(1.9rem,4vw,3.22rem);margin:0 0 15px;font-weight:790}
+h2{font-size:clamp(1.35rem,2.4vw,1.9rem);margin:0 0 13px}
+h3{font-size:1.13rem;margin:0 0 9px}
+h4{margin:0 0 8px;font-size:1rem}
+p{margin:0 0 1em}
+.lead{font-size:1.04rem;color:var(--text);line-height:1.76;max-width:74ch}
+.muted,.caption{color:var(--muted)}
+.caption{font-size:.78rem}
+.kicker{color:var(--primary);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
+.page-heading{margin-bottom:28px;max-width:850px}
+.page-heading .lead{font-size:.99rem}
+.section-title{margin:44px 0 16px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.section-title a{font-size:.85rem;font-weight:670}
+.card,.paper-list-item,.reading-list-item,.note-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card{padding:22px}
+.card p:last-child,.paper-list-item p:last-child{margin-bottom:0}
+.card-link{text-decoration:none;display:flex;flex-direction:column;gap:9px;height:100%;color:inherit;transition:border-color .1s,transform .1s}
+.card-link:hover{transform:translateY(-2px);text-decoration:none;border-color:#8aad9c;color:inherit}
+.card-link h3{margin:0;color:var(--ink)}
+.card-link p{color:var(--text);font-size:.9rem}
+.card-link .tail{margin-top:auto;font-size:.82rem;color:var(--primary);font-weight:700}
+.columns-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.columns-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.home-intro{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(250px,.7fr);gap:35px;align-items:start;margin-top:6px}
+.home-intro h1{max-width:20ch}
+.home-caption{border:1px solid var(--line);border-left:4px solid var(--primary);border-radius:10px;background:var(--surface);padding:19px 21px;margin-top:10px}
+.home-caption h2{font-size:1rem;margin-bottom:9px}
+.home-caption p{font-size:.86rem;color:var(--text)}
+.overview-items{display:grid;gap:11px;margin-top:13px}
+.overview-items div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;gap:12px;font-size:.84rem}
+.overview-items dt{color:var(--muted)}
+.overview-items dd{font-weight:730;margin:0;text-align:right}
+.home-quote{padding:21px;border-radius:11px;background:#eaf2ec;color:#1c5242;margin-top:28px;max-width:890px}
+.home-quote small{display:block;margin-top:8px;color:var(--muted)}
+.article-preview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.paper-list-item{padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.paper-list-item h3{font-size:1.04rem;line-height:1.42;margin:0}
+.paper-list-item h3 a{text-decoration:none;color:var(--ink)}
+.paper-list-item h3 a:hover{text-decoration:underline;color:var(--primary)}
+.paper-meta{font-size:.79rem;color:var(--muted)}
+.paper-description{font-size:.87rem;color:var(--text);margin:0}
+.paper-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;border-top:1px solid var(--line);padding-top:12px;margin-top:auto;font-size:.8rem}
+.paper-footer a{font-weight:700;text-decoration:none}
+.topic-label{font-size:.69rem;color:var(--primary-dark);background:var(--primary-tint);border-radius:100px;padding:4px 9px;font-weight:780;white-space:normal}
+.concept-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.72rem;background:var(--soft);color:var(--text);padding:4px 9px;border-radius:100px}
+.filters{display:grid;grid-template-columns:minmax(240px,2fr) minmax(140px,1fr) minmax(130px,1fr);gap:12px;margin:20px 0 12px}
+.form-field label{display:block;font-size:.81rem;font-weight:670;margin-bottom:7px}
+.form-field input,.form-field select,.form-field textarea,.search-box{border:1px solid #b5c8bc;border-radius:9px;background:#fff;color:var(--ink);padding:10px 12px;width:100%;min-height:45px}
+.form-field textarea{min-height:180px;resize:vertical;line-height:1.65}
+.filter-status{color:var(--muted);font-size:.84rem;margin:9px 0 17px}
+.paper-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.paper-list-item[hidden],.filter-empty[hidden]{display:none}
+.filter-empty{padding:25px;border:1px dashed #a6beaf;border-radius:9px;color:var(--muted)}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:9px 14px;border-radius:9px;border:1px solid #aec7b6;color:var(--primary-dark);background:#fff;font-size:.86rem;font-weight:700;text-decoration:none;min-height:43px;line-height:1.35}
+.btn:hover{background:#eaf4ed;color:var(--primary-dark);text-decoration:none}
+.btn-primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.btn-primary:hover{background:var(--primary-dark);color:#fff}
+.button-row{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+.reader-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:34px;align-items:start}
+.reader-primary{min-width:0;max-width:800px}
+.reader-aside{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:19px;position:sticky;top:18px}
+.reader-aside h2{font-size:1rem;margin-bottom:12px}
+.reader-aside ul{padding-left:19px;font-size:.81rem;line-height:1.55;color:var(--text);margin:0}
+.reader-aside li{margin-bottom:8px}
+.reader-heading{margin-bottom:23px}
+.reader-heading h1{font-size:clamp(1.65rem,2.6vw,2.45rem);line-height:1.25}
+.reader-meta{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:.83rem;margin:14px 0 19px}
+.reader-section{margin-top:30px;max-width:78ch}
+.reader-section h2{font-size:1.34rem;border-bottom:1px solid var(--line);padding-bottom:11px}
+.reader-section ul li{margin-bottom:9px;color:var(--text)}
+.reader-section blockquote{margin:20px 0;border-left:3px solid var(--primary);padding:8px 16px;background:#eef4ee;border-radius:0 9px 9px 0;font-size:.97rem}
+.reader-section a{overflow-wrap:anywhere}
+.outline-box{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:17px;margin-top:18px}
+.note-panel{padding:22px;margin-top:28px}
+.note-panel textarea{margin:8px 0}
+.note-panel .note-status{color:var(--muted);font-size:.78rem}
+.notice{border:1px solid var(--warning-line);background:var(--warning);border-radius:10px;padding:15px 17px;font-size:.88rem;color:#664b23;margin:20px 0}
+.notice.info{background:var(--primary-tint);border-color:#b9d5c2;color:#224f3c}
+.week-list{display:grid;gap:16px}
+.week{display:grid;grid-template-columns:112px minmax(0,1fr);gap:19px;padding:23px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.week-index{font-size:.74rem;color:var(--primary);font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.week h2{font-size:1.34rem;margin:0 0 7px}
+.week p{color:var(--text);font-size:.9rem}
+.reading-list{list-style:none;padding:0;margin:13px 0}
+.reading-list li{padding:8px 0;border-bottom:1px solid var(--line)}
+.reading-list li:last-child{border-bottom:0}
+.reading-list a{text-decoration:none;font-size:.86rem;font-weight:650}
+.exercise{padding:13px;background:var(--soft);border-radius:8px;font-size:.87rem;margin-top:15px}
+.exercise strong{display:block;margin-bottom:4px;color:var(--primary-dark)}
+.arch-diagram{border:1px solid var(--line);background:var(--surface);padding:22px;border-radius:13px;margin:23px 0}
+.arch-flow{max-width:720px;margin:0 auto;display:grid;gap:10px;justify-items:center}
+.arch-box{padding:13px 16px;border:1px solid #a9c9b4;border-radius:9px;background:#f0f6f1;text-align:center;width:min(100%,490px)}
+.arch-box.primary{background:var(--primary-dark);color:#fff}
+.arch-box small{display:block;margin-top:4px;color:inherit;opacity:.85}
+.arch-arrow{color:var(--primary);font-size:1.35rem;line-height:1}
+.arch-workers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;width:100%}
+.arch-workers .arch-box{width:100%;padding:12px 8px}
+.arch-workers strong{display:block;font-size:.88rem}
+.table-wrap{overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:11px}
+table{border-collapse:collapse;width:100%;min-width:610px;background:var(--surface)}
+th,td{border-bottom:1px solid var(--line);padding:11px 13px;vertical-align:top;text-align:left;font-size:.86rem}
+th{background:#eaf2ec;font-size:.8rem;color:#214f3f}
+tr:last-child td{border:0}
+.terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.term{padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:11px}
+.term h2{font-size:1.08rem;margin-bottom:7px}
+.term p{font-size:.88rem;color:var(--text);margin:0}
+.personal-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.progress-track{height:10px;background:#dfebe2;border-radius:100px;overflow:hidden;margin:12px 0}
+.progress-bar{height:100%;background:var(--primary);width:0;transition:width .15s}
+.progress-label{font-size:.82rem;color:var(--muted)}
+.personal-entry{background:#fff;border:1px solid var(--line);padding:16px;border-radius:11px}
+.personal-entry .note-excerpt{color:var(--text);font-size:.84rem;white-space:pre-line;overflow-wrap:anywhere}
+.quiz-form{display:grid;gap:15px}
+.quiz-fieldset{padding:19px;border:1px solid var(--line);border-radius:11px;background:#fff;min-width:0}
+.quiz-fieldset legend{position:relative;display:block;float:none;width:100%;max-width:100%;font-size:1rem;font-weight:750;line-height:1.42;white-space:normal;overflow-wrap:anywhere;padding:0 0 12px;margin:0}
+.quiz-choice{display:flex;gap:11px;align-items:flex-start;border:1px solid transparent;background:var(--soft);border-radius:8px;padding:12px;margin-top:7px;cursor:pointer;font-size:.87rem;color:var(--ink)}
+.quiz-choice:hover,.quiz-choice:focus-within{background:var(--primary-tint);border-color:#a1c4ab}
+.quiz-choice input{accent-color:var(--primary);width:18px;height:18px;flex:none;margin-top:3px}
+.quiz-feedback{font-size:.83rem;margin:13px 0 0;color:var(--text)}
+.quiz-fieldset[data-result="correct"]{border-color:#37865e}
+.quiz-fieldset[data-result="incorrect"]{border-color:#b8894f}
+.quiz-score{font-weight:750;color:var(--primary-dark)}
+.footer{border-top:1px solid var(--line);background:#fff;padding:29px 0 38px;font-size:.84rem;color:var(--muted)}
+.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:19px}
+.footer strong{color:var(--ink)}
+.footer-links{display:grid;gap:5px}
+.footer-links a{font-size:.82rem;color:var(--text)}
+[hidden]{display:none!important}
+@media(max-width:970px){.header-inner{align-items:flex-start;flex-direction:column;gap:11px}.site-nav{justify-content:flex-start}.home-intro{grid-template-columns:1fr}.reader-layout{grid-template-columns:1fr}.reader-aside{position:static}.columns-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.container{width:min(100% - 32px,1160px)}.site-main{padding-top:21px}.site-nav{gap:3px}.site-nav a{padding:7px 8px;font-size:.8rem}.columns-2,.columns-3,.article-preview,.paper-grid,.terms,.personal-panels{grid-template-columns:minmax(0,1fr)}.week{grid-template-columns:minmax(0,1fr);gap:9px}.filters{grid-template-columns:minmax(0,1fr)}.footer-inner{grid-template-columns:minmax(0,1fr)}.arch-workers{grid-template-columns:minmax(0,1fr)}.section-title{align-items:flex-start;flex-direction:column}}
+/* Reflow: avoid clipped metadata in the home intro at 200% text. */
+.overview-items div{flex-wrap:wrap;min-width:0}
+.overview-items dt,.overview-items dd{min-width:0;overflow-wrap:anywhere}
+@media(max-width:1100px){.home-intro{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+@media print{.site-nav,.buttons,.footer-links,.btn,.skip-link,.filter-form,.quiz-form,.note-panel{display:none!important}.site-header{border:0}.site-main{padding:0}.reader-layout{display:block}.reader-aside{display:none}body{background:#fff;color:#000}.paper-grid{grid-template-columns:1fr 1fr}.paper-list-item,.card{box-shadow:none;break-inside:avoid}.container{width:100%}}
+/* IHC / reflow: nenhuma palavra, botão ou coluna força a tela inteira a 320px. */
+h1,h2,h3,h4,.paper-description,.paper-meta,.page-heading,.term,.reader-primary,.reader-aside,.card,.paper-list-item{overflow-wrap:anywhere;hyphens:auto}
+.home-intro>* ,.columns-3>* ,.columns-2>* ,.paper-grid>* ,.terms>* ,.reader-layout>* ,.personal-panels>*{min-width:0}
+.btn{max-width:100%;min-width:0;white-space:normal;text-align:center;overflow-wrap:anywhere}
+.reader-meta>*{min-width:0;overflow-wrap:anywhere}
+@media(max-width:700px){.overview-items div{display:block}.overview-items dt,.overview-items dd{text-align:left;overflow-wrap:anywhere}.overview-items dd{margin-top:3px}}
 
+/* Progressive, keyboard-operable mobile navigation prevents a six-line masthead at 200% text. */
+.mobile-menu{display:none}
+@media(max-width:700px){
+ .header-inner{flex-direction:row;align-items:center;flex-wrap:wrap;gap:9px}
+ .site-nav{display:none}
+ .mobile-menu{display:block;max-width:100%;margin-left:auto}
+ .mobile-menu summary{font-weight:730;font-size:.85rem;color:var(--primary-dark);cursor:pointer;border:1px solid var(--line);background:#f5f8f5;border-radius:8px;padding:8px 11px;min-height:42px;overflow-wrap:anywhere}
+ .mobile-menu nav{display:grid;gap:3px;margin-top:10px;padding:9px;background:#fff;border:1px solid var(--line);border-radius:9px;min-width:0}
+ .mobile-menu nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:6px;font-weight:650;font-size:.87rem}
+ .mobile-menu nav a:hover,.mobile-menu nav a[aria-current="page"]{background:var(--primary-tint);color:var(--primary-dark)}
+}
+.paper-list-item > .topic-label{align-self:flex-start}
+
+
+/* PRESERVACAO DO DESIGN APROVADO: hero V3 e grafico SVG originais, sem redesenho. */
 /* TEST-DRIVE V2 — overrides isolados ao hero; biblioteca e ferramentas originais preservadas. */
 .topbar{min-width:0;gap:clamp(10px,2vw,28px);padding-block:15px;background:#fff}
 .topbar .logo{min-width:0;max-width:100%;flex:0 1 auto;overflow-wrap:anywhere}.topbar .logo span:last-child,.topbar .logo small{min-width:0;max-width:100%;overflow-wrap:anywhere;white-space:normal;line-height:1.4}.topbar .nav{min-width:0;gap:clamp(10px,1.6vw,22px)}.topbar .nav a{white-space:nowrap}
@@ -36,38 +222,70 @@
 @media print{.hero.alt-hero{background:#fff!important;color:#000!important;display:block}.hero.alt-hero h1,.hero.alt-hero h1 span,.alt-visual h2{color:#111!important}.hero.alt-hero .alt-copy p{color:#333!important}.alt-visual{display:none!important}}
 
 
-/* V3: Quiz cards are real cards, not fieldset borders with floating legends. */
-.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;clip-path:inset(50%)!important}
-.quiz-question{min-inline-size:0;max-width:100%;margin:0 0 16px;padding:clamp(17px,2.8vw,27px);border:1px solid var(--line);border-radius:17px;background:var(--paper);box-shadow:0 9px 25px #0a322112}
-.quiz-question legend.visually-hidden{padding:0;margin:-1px}
-.quiz-heading{display:flex;gap:14px;align-items:center;margin-bottom:19px;min-width:0}
-.quiz-number{flex:none;width:48px;height:48px;display:grid;place-items:center;border-radius:13px;background:#e4f1e8;color:#096b51;font-size:1rem;font-weight:850;font-variant-numeric:tabular-nums;letter-spacing:-.035em}
-.quiz-heading-copy{min-width:0;flex:1}
-.quiz-kicker{display:block;margin-bottom:5px;color:#08765b;font-size:.69rem;font-weight:850;letter-spacing:.1em;line-height:1.3}
-.quiz-question .quiz-heading h3{margin:0;font-size:clamp(1.02rem,1.7vw,1.25rem);font-weight:780;line-height:1.37;color:var(--ink);letter-spacing:-.02em;overflow-wrap:anywhere}
-.quiz-options{display:grid;gap:8px}
-.quiz-question .quiz-option{display:flex;gap:13px;align-items:center;min-height:50px;padding:12px 15px;margin:0;border:1px solid transparent;border-radius:12px;background:#f2f7f3;color:var(--ink);font-size:.9rem;line-height:1.5;cursor:pointer;overflow-wrap:anywhere;transition:background-color .12s,border-color .12s}
-.quiz-question .quiz-option:hover{background:#eaf5ed;border-color:#bcd9c4}
-.quiz-question .quiz-option:has(input:checked){background:#e2f1e7;border-color:#62ad80}
-.quiz-question .quiz-option:focus-within{outline:3px solid var(--gold);outline-offset:2px}
-.quiz-question input[type="radio"]{flex:0 0 auto;width:1.13rem;height:1.13rem;margin:0;accent-color:var(--brand);cursor:pointer}
-.quiz-option-text{flex:1;min-width:0}
-.quiz-question .feedback{margin:0;font-size:.85rem;line-height:1.5;color:#1e684d}
-.quiz-question .feedback:not(:empty){margin-top:14px;padding:12px 14px;background:#ecf6ee;border-radius:10px;border-left:3px solid #0b7f5b}
-.quiz-question .feedback[data-result="wrong"]{background:#fff6e9;color:#81551f;border-left-color:#b67e35}
-.quiz-question .feedback[data-result="missing"]{background:#f3f5f3;color:#566b60;border-left-color:#9faea5}
-#quiz .resources{display:flex;gap:11px;align-items:center;flex-wrap:wrap;margin-top:19px}
-#quiz .resources .actionbtn{min-height:44px}
-@media(max-width:600px){.quiz-heading{gap:11px;align-items:flex-start}.quiz-number{width:42px;height:42px;border-radius:11px}.quiz-question .quiz-option{padding:12px 11px;min-height:50px}.quiz-question .quiz-heading h3{font-size:1.07rem}}
-@media(prefers-reduced-motion:reduce){.quiz-question .quiz-option{transition:none}}
-</style></head><body>
-<div class="topbar"><a class="logo" href="#inicio"><span class="logo-icon">D</span><span>DARWIN / ATLAS<small>PESQUISA · SISTEMAS MULTIAGENTES</small></span></a><nav class="nav" aria-label="Navegação principal"><a href="#arquitetura">Arquitetura</a><a href="#trilha">Trilha</a><a href="#biblioteca">Artigos</a><a href="#pesquisa">Pesquisa</a><a href="#avaliacao">Autoavaliação</a></nav></div>
-<main class="wrap"><header class="hero alt-hero" id="inicio" aria-labelledby="alt-title">
+
+/* Adaptacao minima do hero aprovado ao portal multipagina V4. */
+.site-main .hero.alt-hero{color:#fff; margin:0 0 clamp(30px,4vw,54px); width:100%; max-width:100%;min-width:0}
+.site-main .hero.alt-hero h1{color:#fff}
+.site-main .hero.alt-hero h1 span{color:#85d94f}
+.site-main .hero.alt-hero .btn{line-height:1.4;text-decoration:none}
+.site-main .hero.alt-hero .btn-outline{border:1px solid #669c82}
+.site-main .hero.alt-hero .alt-copy>p{color:#d2e6d9}
+.site-main .hero.alt-hero .alt-visual .alt-visual-sub{color:#aec9ba}
+.site-main .hero.alt-hero .alt-visual h2{color:#f2fcf5}
+.site-main .hero.alt-hero .alt-disclaimer{color:#a9c9b7!important}
+.site-main .hero.alt-hero .alt-visual{min-width:0}
+@media(max-width:700px){.site-main .hero.alt-hero{margin-top:0}}
+
+
+/* V4.2 — resumo de arquitetura visível na página inicial antes da literatura. */
+.home-architecture{margin-block:clamp(34px,5vw,60px)}
+.home-architecture>.lead{max-width:78ch;font-size:.94rem;margin-bottom:20px}
+.architecture-overview{display:grid;gap:12px;padding:clamp(15px,2.8vw,28px);background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
+.architecture-governance{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px}
+.architecture-governance-node{border:1px solid #b1cbb8;border-radius:10px;background:#eef6ee;min-width:0;width:min(100%,285px);padding:12px 16px;text-align:center}
+.architecture-governance-node strong,.architecture-decision strong{display:block;color:var(--ink)}
+.architecture-governance-node small{display:block;font-size:.81rem;color:var(--text);line-height:1.5;margin-top:3px}
+.architecture-governance-node.coordinator{background:#105846;border-color:#105846}
+.architecture-governance-node.coordinator strong{color:#fff}
+.architecture-governance-node.coordinator small{color:#d4e8dd}
+.architecture-connector-inline,.architecture-connector-down{color:#2c7861;font-size:1.3rem;line-height:1;flex:none;text-align:center}
+.architecture-connector-down{display:block}
+.architecture-stages{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,.64fr) minmax(0,1fr);gap:12px;margin:0;padding:0;align-items:stretch}
+.architecture-stages>li{min-width:0}
+.architecture-wave,.architecture-integration{border:1px solid #cadbcf;border-radius:12px;background:#f7faf7;padding:17px 16px}
+.architecture-wave-kicker{display:block;font-size:.71rem;letter-spacing:.08em;color:#29634f;font-weight:800}
+.architecture-wave h3,.architecture-integration h3{font-size:1.05rem;margin:8px 0 10px;letter-spacing:-.02em}
+.architecture-wave p,.architecture-integration p{font-size:.81rem;color:var(--text);line-height:1.55;margin:10px 0 0}
+.architecture-chips{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.architecture-chips li{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:2px 8px;padding:9px 10px;border-radius:8px;background:#fff;border:1px solid #e1eae2;min-width:0}
+.architecture-chips strong{font-size:.83rem;color:var(--ink)}
+.architecture-chips span{font-size:.76rem;color:var(--text)}
+.architecture-integration{background:#ebf4eb;display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center}
+.architecture-integration .architecture-connector-inline{margin-top:13px}
+.architecture-decision{margin-inline:auto;border:1px solid #bdd1c1;background:#eff7f1;border-radius:10px;padding:12px 20px;text-align:center;width:min(100%,450px)}
+.architecture-decision span{display:block;font-size:.83rem;color:var(--text);margin-top:3px}
+.architecture-caption{margin-top:14px;max-width:85ch}
+@media(max-width:900px){.architecture-stages{grid-template-columns:minmax(0,1fr)}.architecture-integration{padding:14px 20px}.architecture-integration .architecture-connector-inline{transform:rotate(90deg);margin:8px 0 0}.architecture-governance-node{width:min(100%,340px)}}
+@media(max-width:520px){.architecture-governance{flex-direction:column}.architecture-governance .architecture-connector-inline{transform:rotate(90deg)}.architecture-governance-node{width:100%}.architecture-chips li{display:block}.architecture-chips span{display:block;margin-top:2px}}
+
+</style>
+</head><body>
+<a class="skip-link" href="#conteudo">Ir ao conteúdo principal</a>
+<header class="site-header"><div class="container header-inner">
+<a class="identity" href="index.html" aria-label="Atlas DARWIN, página inicial"><span class="identity-mark" aria-hidden="true">D</span><span><span class="identity-name">DARWIN / ATLAS</span><span class="identity-sub">Biblioteca científica · Engenharia de IA</span></span></a>
+<nav class="site-nav" aria-label="Navegação principal">
+<a href="biblioteca.html" >Biblioteca</a><a href="trilha.html" >Trilha</a><a href="arquitetura.html" >Arquitetura</a><a href="metodologia.html" >Pesquisa</a><a href="caderno.html" >Caderno</a><a href="sobre.html" >Sobre</a>
+</nav>
+<details class="mobile-menu"><summary>Menu</summary><nav aria-label="Navegação principal móvel"><a href="biblioteca.html" >Biblioteca</a><a href="trilha.html" >Trilha</a><a href="arquitetura.html" >Arquitetura</a><a href="metodologia.html" >Pesquisa</a><a href="caderno.html" >Caderno</a><a href="sobre.html" >Sobre</a></nav></details>
+</div></header>
+<main id="conteudo" class="site-main"><div class="container">
+
+<header class="hero alt-hero" id="inicio" aria-labelledby="alt-title">
  <div class="alt-copy">
   <div class="alt-eyebrow"><span class="alt-dot" aria-hidden="true"></span> Biblioteca científica aberta · 2026</div>
   <h1 id="alt-title">Agentes coordenados. <span>Engenharia verificável.</span></h1>
   <p>Uma biblioteca para estudar como sistemas multiagentes planejam, colaboram e são avaliados — com 15 artigos acadêmicos, trilhas de leitura e ferramentas de estudo.</p>
-  <div class="hero-actions"><a class="btn btn-primary" href="#biblioteca">Explorar artigos <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#arquitetura">Entender a arquitetura <span aria-hidden="true">↓</span></a></div>
+  <div class="hero-actions"><a class="btn btn-primary" href="biblioteca.html">Explorar artigos <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="arquitetura.html">Entender a arquitetura <span aria-hidden="true">↓</span></a></div>
   <div class="alt-metrics" aria-label="Informações da biblioteca">
    <div><b>15</b><span>Artigos</span></div><div><b>04</b><span>Semanas</span></div><div><b>02</b><span>Ondas</span></div><div><b>01</b><span>Curadoria aberta</span></div>
   </div>
@@ -90,16 +308,155 @@
   <p class="alt-disclaimer">Esquema conceitual · Não representa dados experimentais.</p>
  </div>
 </header>
-<div class="notice"><strong>O nome “DARWIN / two-wave” é uma proposta de nomenclatura do projeto, não um padrão acadêmico estabelecido.</strong> O conteúdo distingue artigos revisados por conferências, preprints, position papers e propostas didáticas. Os PDFs originais pertencem aos respectivos publicadores e são acessados por links externos.</div>
-<section class="section" id="conceitos"><div class="section-head"><div><span class="label">01 / Fundamentos</span><h2>Um padrão composto, não uma fórmula mágica</h2><p>Orquestrar agentes significa estabelecer papéis, contratos e critérios de aceitação. O paralelismo só compensa quando as tarefas são independentes e a integração sabe esperar.</p></div></div><div class="three"><div class="panel"><span class="symbol">01</span><h3>Orchestrator–Worker</h3><p>Um coordenador organiza trabalho para especialistas e recebe entregas verificáveis.</p></div><div class="panel"><span class="symbol">02</span><h3>Fan-out / Fan-in</h3><p>Trabalhos sem dependência são executados em paralelo; resultados convergem no integrador.</p></div><div class="panel"><span class="symbol">03</span><h3>Independent QA</h3><p>O revisor deve ser distinto do autor e examinar evidências do SHA correto.</p></div></div><p class="caption">Importante: múltiplos prompts não comprovam múltiplos agentes reais. Um resultado CI em SHA anterior não certifica alterações posteriores.</p></section>
-<section class="section" id="arquitetura"><div class="section-head"><div><span class="label">02 / Arquitetura</span><h2>Um coordenador. Duas ondas.</h2><p>Modelo didático proposto para organizar engenharia com IA: trabalhadores paralelos, integração única, QA não autora e uma decisão humana ao final.</p></div></div><div class="arch"><div class="arch-grid"><div class="arch-node"><strong>Operador humano</strong><small>Objetivos, orçamento e autorização</small></div><div class="arrow">↓</div><div class="arch-node highlight"><strong>Coordenador único</strong><small>RECONCILE → PLAN → DELEGATE</small></div><span class="article-tag">Onda 1 · fan-out</span><div class="arrow">↓</div><div class="arch-row"><div class="arch-node"><strong>Código</strong><small>Implementação e testes</small></div><div class="arch-node"><strong>CI</strong><small>Guardas e ambientes</small></div><div class="arch-node"><strong>UX/Evidências</strong><small>Comparação e cobertura</small></div></div><div class="arrow">↓</div><div class="arch-node"><strong>Integrador único</strong><small>Fan-in · contrato · SHA final</small></div><span class="article-tag">Onda 2 · verificação</span><div class="arrow">↓</div><div class="arch-row"><div class="arch-node"><strong>QA não autora</strong><small>Contraprovas</small></div><div class="arch-node"><strong>Code review</strong><small>Findings no SHA</small></div><div class="arch-node"><strong>CI com gates</strong><small>Focal → regressão</small></div></div><div class="arrow">↓</div><div class="arch-node"><strong>Responsável humano</strong><small>Aceite e publicação autorizada</small></div></div><p class="caption">A posição relativa entre revisão e CI depende do projeto: QA pré-publicação vem antes do push e QA terminal examina a execução final. O desenho não substitui controle de autoria e logs de ferramentas.</p></div></section>
-<section class="section" id="trilha"><div class="section-head"><div><span class="label">03 / Aprendizagem</span><h2>Uma trilha de quatro semanas</h2><p>Comece pelo vocabulário e avance até programação assistida por agentes, métricas de avaliação e pesquisas críticas.</p></div></div><div class="progress"><div><strong>Progresso de leitura</strong><small>Os registros ficam neste navegador. Exporte as notas para ter um backup.</small></div><div style="display:flex;align-items:center;gap:12px"><span class="count" id="progress">0/15</span><div class="bar" role="progressbar" id="progress-bar" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" aria-label="Progresso de leitura"><div class="fill" id="progress-fill"></div></div></div></div><div class="weeks" id="weeks"><div class="week"><small class="article-tag">Semana 01</small><h3>Coordenação e agentes</h3><p>Survey, Magentic-One e AutoGen.</p><ol><li><a href="#paper-01">Survey multiagente</a></li><li><a href="#paper-02">Magentic-One</a></li><li><a href="#paper-03">AutoGen</a></li></ol><div class="task"><strong>Exercício</strong>Desenhe um coordenador e justifique o que caracteriza um agente real.</div></div><div class="week"><small class="article-tag">Semana 02</small><h3>Paralelismo e software</h3><p>LLMCompiler, MetaGPT e ChatDev.</p><ol><li><a href="#paper-04">LLMCompiler</a></li><li><a href="#paper-05">MetaGPT</a></li><li><a href="#paper-06">ChatDev</a></li></ol><div class="task"><strong>Exercício</strong>Modele um DAG com fan-out, barrier e integrador único.</div></div><div class="week"><small class="article-tag">Semana 03</small><h3>Testes e avaliação</h3><p>AgentCoder, SWE-agent e SWE-bench.</p><ol><li><a href="#paper-08">AgentCoder</a></li><li><a href="#paper-09">SWE-agent</a></li><li><a href="#paper-10">SWE-bench</a></li></ol><div class="task"><strong>Exercício</strong>Defina gates por SHA e um protocolo de QA independente.</div></div><div class="week"><small class="article-tag">Semana 04</small><h3>Limites e falhas</h3><p>Agentless, MAST, Position Paper e AFlow.</p><ol><li><a href="#paper-11">Agentless</a></li><li><a href="#paper-12">Why Do Multi-Agent LLM Systems Fail?</a></li><li><a href="#paper-13">Large Language Models Miss the Multi-agent Mark</a></li><li><a href="#paper-07">AFlow</a></li></ol><div class="task"><strong>Exercício</strong>Proponha um experimento que controle custo, tempo, qualidade e taxa de sucesso.</div></div></div></section>
-<section class="section" id="biblioteca"><div class="section-head"><div><span class="label">04 / Biblioteca</span><h2>15 artigos e publicações para estudar</h2><p>Busca por temas, filtragem por categoria, links acadêmicos e fichamentos. Marque suas leituras e continue de onde parou.</p></div></div><div class="toolbar"><input type="search" id="search" aria-label="Buscar publicações" placeholder="Buscar artigos, autores, assuntos…"><select id="topic" aria-label="Filtrar tema"><option value="">Todos os temas</option></select><select id="priority" aria-label="Filtrar prioridade"><option value="">Todas as prioridades</option><option>Essencial</option><option>Alta</option><option>Complementar</option><option>Avançado</option></select></div><div class="paper-count" id="paper-count">15 publicações</div><div class="cards" id="papers"></div><p class="no-results" id="no-results" hidden>Nenhum artigo corresponde aos filtros. Tente outra busca.</p></section>
-<section class="section" id="pesquisa"><div class="section-head"><div><span class="label">05 / Método científico</span><h2>Como provar que duas ondas realmente ajudam?</h2><p>Um desenho experimental proposto para estudar ganho real, não apenas volume de mensagens, agentes ou commits.</p></div></div><div class="panel"><h3>Pergunta de pesquisa</h3><div class="research-question">Em tarefas de manutenção de software, um coordenador com trabalhadores paralelos e revisão independente reduz o tempo e o retrabalho sem aumentar a taxa de regressão, quando comparado a um agente único com o mesmo orçamento de modelos e ferramentas?</div><div class="two"><div><h3>Desenho de experimento</h3><ol class="steps"><li><strong>A:</strong> agente único, mesmas ferramentas.</li><li><strong>B:</strong> coordenador com até três especialistas e QA separada.</li><li>Mesmo repositório, issues, SHA inicial, teto de tokens, runner e critérios.</li><li>Medir sucesso no SHA final, tempo de relógio, gasto, regressões e retrabalho.</li><li>Repetir e reportar as falhas, não apenas casos que passaram.</li></ol></div><div><h3>Limites metodológicos</h3><p>Taxas de sucesso publicadas dependem do benchmark, modelo, versão e critérios de aceite. Mais agentes podem aumentar comunicação e custo. Compare baselines simples e documente o ganho atribuído a cada componente.</p><p><strong>Leituras críticas:</strong> Agentless, MAST e o position paper de La Malfa e colaboradores.</p></div></div></div></section>
-<section class="section" id="avaliacao"><div class="section-head"><div><span class="label">06 / Aprendizagem ativa</span><h2>Teste seus conceitos</h2><p>Três questões didáticas para revisar os conceitos centrais. Estas perguntas não são reproduções dos artigos originais.</p></div></div><form id="quiz"><fieldset class="quiz-question"><legend class="visually-hidden">Questão 1. O que é fan-out/fan-in?</legend><div class="quiz-heading" aria-hidden="true"><span class="quiz-number">01</span><div class="quiz-heading-copy"><span class="quiz-kicker">QUESTÃO 1 DE 3</span><h3>O que é fan-out/fan-in?</h3></div></div><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q1" value="0"> <span class="quiz-option-text">Fazer todas as tarefas em sequência.</span></label><label class="quiz-option"><input type="radio" name="q1" value="1"> <span class="quiz-option-text">Executar tarefas independentes em paralelo e agregar os resultados.</span></label><label class="quiz-option"><input type="radio" name="q1" value="2"> <span class="quiz-option-text">Reutilizar os resultados de testes antigos.</span></label></div><div class="feedback" role="status" aria-live="polite" aria-atomic="true"></div></fieldset><fieldset class="quiz-question"><legend class="visually-hidden">Questão 2. Quem pode comprovar QA não autora?</legend><div class="quiz-heading" aria-hidden="true"><span class="quiz-number">02</span><div class="quiz-heading-copy"><span class="quiz-kicker">QUESTÃO 2 DE 3</span><h3>Quem pode comprovar QA não autora?</h3></div></div><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q2" value="0"> <span class="quiz-option-text">O autor do código, apenas renomeando sua função.</span></label><label class="quiz-option"><input type="radio" name="q2" value="1"> <span class="quiz-option-text">Um executor realmente distinto do autor, com evidências próprias.</span></label><label class="quiz-option"><input type="radio" name="q2" value="2"> <span class="quiz-option-text">Qualquer agente após um commit.</span></label></div><div class="feedback" role="status" aria-live="polite" aria-atomic="true"></div></fieldset><fieldset class="quiz-question"><legend class="visually-hidden">Questão 3. O que prova um CI PASS?</legend><div class="quiz-heading" aria-hidden="true"><span class="quiz-number">03</span><div class="quiz-heading-copy"><span class="quiz-kicker">QUESTÃO 3 DE 3</span><h3>O que prova um CI PASS?</h3></div></div><div class="quiz-options"><label class="quiz-option"><input type="radio" name="q3" value="0"> <span class="quiz-option-text">Qualifica automaticamente qualquer HEAD futuro.</span></label><label class="quiz-option"><input type="radio" name="q3" value="1"> <span class="quiz-option-text">Concede aprovação humana.</span></label><label class="quiz-option"><input type="radio" name="q3" value="2"> <span class="quiz-option-text">Comprova os testes realmente executados naquele SHA e ambiente.</span></label></div><div class="feedback" role="status" aria-live="polite" aria-atomic="true"></div></fieldset><div class="resources"><button type="submit" class="actionbtn primary">Conferir respostas</button><button type="reset" class="actionbtn">Recomeçar</button><span class="quiz-score" id="quiz-score" aria-live="polite"></span></div></form></section>
-<section class="section" id="recursos"><div class="section-head"><div><span class="label">07 / Seus estudos</span><h2>Guarde sua pesquisa</h2><p>O progresso e as anotações são armazenados no navegador quando ele permite. Não há servidores de coleta nem contas de usuário.</p></div></div><div class="panel"><h3>Exportações</h3><p>Faça um backup de suas notas, obtenha o catálogo ou salve as referências acadêmicas. Os dados não saem do navegador até você acionar um link ou exportação.</p><div class="resources"><button type="button" class="actionbtn primary" id="export-notes">Exportar fichamentos (.md)</button><button type="button" class="actionbtn" id="export-csv">Catálogo (.csv)</button><button type="button" class="actionbtn" id="export-bib">Referências (.bib)</button></div><p class="caption">A navegação pelos links dos artigos abre sites externos de universidades, periódicos e preprints. Este site não redistribui os PDFs completos.</p></div></section>
-<footer class="footer">Atlas DARWIN · Biblioteca científica de orquestração multiagente · Edição 2026. <br>Curadoria e materiais didáticos preparados para estudo; confirme autores e metadados nas publicações originais. Site estático, sem analytics ou cookies de terceiros. <a href="#inicio">Voltar ao topo ↑</a></footer></main>
-<script id="papers-data" type="application/json">[{"id":"01","title":"Large Language Model Based Multi-agents: A Survey of Progress and Challenges","authors":"Guo, T. et al.","venue":"IJCAI 2024 · Survey","year":2024,"topic":"Panorama","priority":"Essencial","summary":"Visão geral de comunicação, papéis, ambientes e limites dos sistemas multiagentes.","landing":"https://www.ijcai.org/proceedings/2024/0890","pdf":"https://arxiv.org/pdf/2402.01680"},{"id":"02","title":"Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks","authors":"Fourney, A. et al.","venue":"Microsoft Research · preprint","year":2024,"topic":"Orquestração","priority":"Essencial","summary":"Coordenador que planeja, distribui tarefas, monitora progresso e replaneja.","landing":"https://arxiv.org/abs/2411.04468","pdf":"https://www.microsoft.com/en-us/research/wp-content/uploads/2024/11/MagenticOne.pdf"},{"id":"03","title":"AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation","authors":"Wu, Q. et al.","venue":"COLM 2024","year":2024,"topic":"Orquestração","priority":"Essencial","summary":"Agentes conversacionais integrados a ferramentas, humanos e padrões de coordenação.","landing":"https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-gen-llm-applications-via-multi-agent-conversation-framework/","pdf":"https://www.microsoft.com/en-us/research/wp-content/uploads/2023/08/LLM_agent.pdf"},{"id":"04","title":"An LLM Compiler for Parallel Function Calling","authors":"Kim, S. et al.","venue":"ICML 2024 / PMLR 235","year":2024,"topic":"Paralelismo","priority":"Essencial","summary":"Planejamento e execução paralela de chamadas de funções com dependências explícitas.","landing":"https://proceedings.mlr.press/v235/kim24y.html","pdf":"https://www.stat.berkeley.edu/~mmahoney/pubs/icml2024_kim24y.pdf"},{"id":"05","title":"MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework","authors":"Hong, S. et al.","venue":"ICLR 2024","year":2024,"topic":"Software","priority":"Essencial","summary":"Papéis, procedimentos e artefatos intermediários em colaboração orientada a software.","landing":"https://proceedings.iclr.cc/paper_files/paper/2024/hash/6507b115562bb0a305f1958ccc87355a-Abstract-Conference.html","pdf":"https://proceedings.iclr.cc/paper_files/paper/2024/file/6507b115562bb0a305f1958ccc87355a-Paper-Conference.pdf"},{"id":"06","title":"ChatDev: Communicative Agents for Software Development","authors":"Qian, C. et al.","venue":"ACL 2024","year":2024,"topic":"Software","priority":"Essencial","summary":"Colaboração conversacional entre agentes para projetar, implementar e testar software.","landing":"https://aclanthology.org/2024.acl-long.810/","pdf":"https://aclanthology.org/2024.acl-long.810.pdf"},{"id":"07","title":"AFlow: Automating Agentic Workflow Generation","authors":"Zhang, J. et al.","venue":"ICLR 2025","year":2025,"topic":"Otimização","priority":"Avançado","summary":"Busca e otimização de fluxos de trabalho agentivos representados como grafos.","landing":"https://proceedings.iclr.cc/paper_files/paper/2025/hash/5492ecbce4439401798dcd2c90be94cd-Abstract-Conference.html","pdf":"https://proceedings.iclr.cc/paper_files/paper/2025/file/5492ecbce4439401798dcd2c90be94cd-Paper-Conference.pdf"},{"id":"08","title":"AgentCoder: Multi-Agent Code Generation with Effective Testing and Self-optimisation","authors":"Huang, D. et al.","venue":"arXiv:2312.13010 · preprint","year":2024,"topic":"Verificação","priority":"Alta","summary":"Separação entre autoria de código, projeto de testes e execução/verificação.","landing":"https://arxiv.org/abs/2312.13010","pdf":"https://arxiv.org/pdf/2312.13010"},{"id":"09","title":"SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering","authors":"Yang, J. et al.","venue":"NeurIPS 2024","year":2024,"topic":"Software","priority":"Alta","summary":"Interfaces para agentes navegarem por repositórios, modificarem código e executarem testes.","landing":"https://arxiv.org/abs/2405.15793","pdf":"https://proceedings.neurips.cc/paper_files/paper/2024/file/5a7c947568c1b1328ccc5230172e1e7c-Paper-Conference.pdf"},{"id":"10","title":"SWE-bench: Can Language Models Resolve Real-World GitHub Issues?","authors":"Jimenez, C. E. et al.","venue":"ICLR 2024","year":2024,"topic":"Avaliação","priority":"Alta","summary":"Benchmark de resolução de issues reais, com avaliação por testes de repositório.","landing":"https://proceedings.iclr.cc/paper_files/paper/2024/hash/edac78c3e300629acfe6cbe9ca88fb84-Abstract-Conference.html","pdf":"https://proceedings.iclr.cc/paper_files/paper/2024/file/edac78c3e300629acfe6cbe9ca88fb84-Paper-Conference.pdf"},{"id":"11","title":"Agentless: Demystifying LLM-based Software Engineering Agents","authors":"Xia, C. S. et al.","venue":"arXiv:2407.01489 · preprint","year":2024,"topic":"Análise crítica","priority":"Essencial","summary":"Baseline mais simples para localização, reparo e validação; questiona complexidade desnecessária.","landing":"https://arxiv.org/abs/2407.01489","pdf":"https://arxiv.org/pdf/2407.01489"},{"id":"12","title":"Why Do Multi-Agent LLM Systems Fail?","authors":"Cemri, M. et al.","venue":"NeurIPS 2025","year":2025,"topic":"Análise crítica","priority":"Essencial","summary":"Taxonomia de falhas em desenho de sistemas, alinhamento e verificação multiagente.","landing":"https://proceedings.neurips.cc/paper_files/paper/2025/hash/b1041e52d3be19f0a9bc491657488e4a-Abstract-Datasets_and_Benchmarks_Track.html","pdf":"https://proceedings.neurips.cc/paper_files/paper/2025/file/b1041e52d3be19f0a9bc491657488e4a-Paper-Datasets_and_Benchmarks_Track.pdf"},{"id":"13","title":"Large Language Models Miss the Multi-agent Mark","authors":"La Malfa, E. et al.","venue":"NeurIPS 2025 · position paper","year":2025,"topic":"Análise crítica","priority":"Alta","summary":"Contraste conceitual entre MAS clássicos e workflows roteirizados com múltiplos LLMs.","landing":"https://proceedings.neurips.cc/paper_files/paper/2025/hash/cc14cadd13ca5a13ba899cb49351c139-Abstract-Position_Paper_Track.html","pdf":"https://proceedings.neurips.cc/paper_files/paper/2025/file/cc14cadd13ca5a13ba899cb49351c139-Paper-Position_Paper_Track.pdf"},{"id":"14","title":"HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face","authors":"Shen, Y. et al.","venue":"NeurIPS 2023","year":2023,"topic":"Orquestração","priority":"Complementar","summary":"Planejamento de subtarefas, seleção de modelos e agregação por um controlador.","landing":"https://www.microsoft.com/en-us/research/publication/hugginggpt-solving-ai-tasks-with-chatgpt-and-its-friends-in-hugging-face/","pdf":"https://arxiv.org/pdf/2303.17580"},{"id":"15","title":"MapReduce: Simplified Data Processing on Large Clusters","authors":"Dean, J.; Ghemawat, S.","venue":"OSDI 2004","year":2004,"topic":"Fundamentos","priority":"Complementar","summary":"Fundamento histórico de paralelismo distribuído e reunião de resultados.","landing":"https://research.google/pubs/mapreduce-simplified-data-processing-on-large-clusters/","pdf":"https://research.google.com/archive/mapreduce-osdi04.pdf"}]</script>
+<section aria-labelledby="percursos-title"><div class="section-title"><h2 id="percursos-title">Escolha um caminho de estudo</h2></div><div class="columns-3">
+<a class="card card-link" href="biblioteca.html"><span class="kicker">Acervo</span><h3>Encontrar uma publicação</h3><p>Pesquisar por título, autor, assunto e prioridade. Cada trabalho possui sua própria ficha e fontes.</p><span class="tail">Abrir catálogo →</span></a>
+<a class="card card-link" href="trilha.html"><span class="kicker">Aprender</span><h3>Estudar por etapas</h3><p>Uma sequência orientada de leitura, com atividades e progresso registrável.</p><span class="tail">Ver as semanas →</span></a>
+<a class="card card-link" href="metodologia.html"><span class="kicker">Investigar</span><h3>Transformar em experimento</h3><p>Variáveis, métricas, baselines e ameaças à validade de estudos com agentes.</p><span class="tail">Ver método →</span></a>
+</div></section>
+<section class="home-architecture" id="arquitetura-resumo" aria-labelledby="home-architecture-title">
+ <div class="section-title"><h2 id="home-architecture-title">Como funciona a arquitetura DARWIN</h2><a href="arquitetura.html">Explorar arquitetura e fundamentos →</a></div>
+ <p class="lead">Uma visão do padrão <em>orchestrator–worker</em> que adotamos como hipótese de engenharia: execução especializada, integração única e revisão independente sob controle humano.</p>
+ <div class="architecture-overview">
+  <div class="architecture-governance" aria-label="Governança inicial">
+   <div class="architecture-governance-node"><strong>Operador humano</strong><small>Define objetivos, limites e autorizações</small></div>
+   <span class="architecture-connector-inline" aria-hidden="true">→</span>
+   <div class="architecture-governance-node coordinator"><strong>Coordenador único</strong><small>Planeja, delega, monitora e reconcilia</small></div>
+  </div>
+  <span class="architecture-connector-down" aria-hidden="true">↓</span>
+  <ol class="architecture-stages" aria-label="Etapas de execução e validação">
+   <li class="architecture-wave"><span class="architecture-wave-kicker">ONDA 1 · EXECUÇÃO</span><h3>Especialistas em paralelo</h3>
+    <ul class="architecture-chips"><li><strong>Código</strong><span>Implementação e testes</span></li><li><strong>CI</strong><span>Guardas e ambiente</span></li><li><strong>Evidências</strong><span>Cobertura e proveniência</span></li></ul>
+    <p>Trabalho independente com ownership exclusivo.</p></li>
+   <li class="architecture-integration"><span class="architecture-wave-kicker">BARREIRA / FAN-IN</span><h3>Integração única</h3><p>Concilia resultados, revisa diffs e congela um candidato por SHA.</p><span aria-hidden="true" class="architecture-connector-inline">→</span></li>
+   <li class="architecture-wave"><span class="architecture-wave-kicker">ONDA 2 · VERIFICAÇÃO</span><h3>QA e revisão</h3>
+    <ul class="architecture-chips"><li><strong>QA não autora</strong><span>Contraprovas próprias</span></li><li><strong>Code review</strong><span>Achados no commit</span></li><li><strong>CI com gates</strong><span>Sequência dependente</span></li></ul>
+    <p>Gates de QA pré-publicação e validação no SHA final.</p></li>
+  </ol>
+  <span class="architecture-connector-down" aria-hidden="true">↓</span>
+  <div class="architecture-decision"><strong>Decisão humana</strong><span>Aceite, integração e operações protegidas</span></div>
+ </div>
+ <p class="caption architecture-caption">Diagrama didático do DARWIN, não extraído dos artigos citados. A organização em duas ondas combina padrões conhecidos e <strong>não comprova superioridade de desempenho</strong> sem estudo controlado. <a href="arquitetura.html">Leia o aprofundamento técnico e as referências.</a></p>
+</section>
+<section aria-labelledby="destaques"><div class="section-title"><h2 id="destaques">Pontos de partida na literatura</h2><a href="biblioteca.html">Ver todos os 15 artigos →</a></div><div class="article-preview"><article class="paper-list-item" data-search="magentic-one: a generalist multi-agent system for solving complex tasks fourney, a. et al. microsoft research · preprint 2024 orquestração essencial coordenador que planeja, distribui tarefas, monitora progresso e replaneja." data-topic="Orquestração" data-priority="Essencial"><span class="topic-label">02 · Orquestração</span><h3><a href="artigos/02-magentic-one-a-generalist-multi-agent-system-for.html">Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks</a></h3><div class="paper-meta">Fourney, A. et al. · 2024 · Microsoft Research · preprint</div><p class="paper-description">Coordenador que planeja, distribui tarefas, monitora progresso e replaneja.</p><div class="paper-footer"><span>preprint · Essencial</span><a href="artigos/02-magentic-one-a-generalist-multi-agent-system-for.html">Abrir ficha do artigo →</a></div></article><article class="paper-list-item" data-search="an llm compiler for parallel function calling kim, s. et al. icml 2024 / pmlr 235 2024 paralelismo essencial planejamento e execução paralela de chamadas de funções com dependências explícitas." data-topic="Paralelismo" data-priority="Essencial"><span class="topic-label">04 · Paralelismo</span><h3><a href="artigos/04-an-llm-compiler-for-parallel-function-calling.html">An LLM Compiler for Parallel Function Calling</a></h3><div class="paper-meta">Kim, S. et al. · 2024 · ICML 2024 / PMLR 235</div><p class="paper-description">Planejamento e execução paralela de chamadas de funções com dependências explícitas.</p><div class="paper-footer"><span>publicação acadêmica · Essencial</span><a href="artigos/04-an-llm-compiler-for-parallel-function-calling.html">Abrir ficha do artigo →</a></div></article><article class="paper-list-item" data-search="agentless: demystifying llm-based software engineering agents xia, c. s. et al. arxiv:2407.01489 · preprint 2024 análise crítica essencial baseline mais simples para localização, reparo e validação; questiona complexidade desnecessária." data-topic="Análise crítica" data-priority="Essencial"><span class="topic-label">11 · Análise crítica</span><h3><a href="artigos/11-agentless-demystifying-llm-based-software-engine.html">Agentless: Demystifying LLM-based Software Engineering Agents</a></h3><div class="paper-meta">Xia, C. S. et al. · 2024 · arXiv:2407.01489 · preprint</div><p class="paper-description">Baseline mais simples para localização, reparo e validação; questiona complexidade desnecessária.</p><div class="paper-footer"><span>preprint · Essencial</span><a href="artigos/11-agentless-demystifying-llm-based-software-engine.html">Abrir ficha do artigo →</a></div></article><article class="paper-list-item" data-search="why do multi-agent llm systems fail? cemri, m. et al. neurips 2025 2025 análise crítica essencial taxonomia de falhas em desenho de sistemas, alinhamento e verificação multiagente." data-topic="Análise crítica" data-priority="Essencial"><span class="topic-label">12 · Análise crítica</span><h3><a href="artigos/12-why-do-multi-agent-llm-systems-fail.html">Why Do Multi-Agent LLM Systems Fail?</a></h3><div class="paper-meta">Cemri, M. et al. · 2025 · NeurIPS 2025</div><p class="paper-description">Taxonomia de falhas em desenho de sistemas, alinhamento e verificação multiagente.</p><div class="paper-footer"><span>publicação acadêmica · Essencial</span><a href="artigos/12-why-do-multi-agent-llm-systems-fail.html">Abrir ficha do artigo →</a></div></article></div></section>
+<section class="home-quote"><strong>Nota de pesquisa</strong><p>A arquitetura “DARWIN em duas ondas” combina padrões conhecidos, mas não é uma categoria científica padronizada. Comparações com um agente único, custos e taxas de falha são necessárias antes de defender qualquer ganho de desempenho.</p><small>Discussão orientada pelas leituras de Magentic-One, LLMCompiler, Agentless e Why Do Multi-Agent LLM Systems Fail?</small></section>
+</div></main>
+<footer class="footer"><div class="container footer-inner"><div><strong>Atlas DARWIN</strong><p>Acervo de leitura e material didático sobre sistemas multiagentes aplicados à engenharia de software.</p><p class="caption">Proposta V4 de arquitetura da informação · Não publicada no site oficial.</p></div><div class="footer-links"><strong>Explorar</strong><a href="biblioteca.html">Biblioteca</a><a href="trilha.html">Trilha de estudos</a><a href="arquitetura.html">Arquitetura</a><a href="metodologia.html">Método científico</a></div><div class="footer-links"><strong>Institucional</strong><a href="glossario.html">Glossário</a><a href="sobre.html">Sobre e fontes</a><a href="historico/v3.html">Versão anterior (V3)</a><a href="comparar.html">Comparar versões</a></div></div></footer>
 <script>
-(()=>{'use strict';const papers=JSON.parse(document.getElementById('papers-data').textContent);const storeKey='atlas-darwin-research-2026';let state={read:{},notes:{}};let canStore=true;try{let d=JSON.parse(localStorage.getItem(storeKey)||'null');if(d&&typeof d==='object')state={read:d.read||{},notes:d.notes||{}}}catch{canStore=false}function persist(){if(!canStore)return;try{localStorage.setItem(storeKey,JSON.stringify(state))}catch{canStore=false}}function elt(tag,cl,content){let n=document.createElement(tag);if(cl)n.className=cl;if(content!=null)n.textContent=content;return n}function link(label,url){let a=elt('a','',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a}const cards=document.getElementById('papers');const topics=[...new Set(papers.map(p=>p.topic))].sort();topics.forEach(t=>{let o=elt('option','',t);o.value=t;document.getElementById('topic').append(o)});function render(){cards.replaceChildren();for(const p of papers){const card=elt('article','paper-card');card.id='paper-'+p.id;card.dataset.search=[p.title,p.authors,p.venue,p.topic,p.summary].join(' ').toLowerCase();card.dataset.topic=p.topic;card.dataset.priority=p.priority;const head=elt('div','paper-header');head.append(elt('span','pill',p.id+' · '+p.topic));const btn=elt('button','readbtn',state.read[p.id]?'✓ Lido':'Marcar lido');btn.type='button';btn.setAttribute('aria-pressed',String(!!state.read[p.id]));btn.addEventListener('click',()=>{state.read[p.id]=!state.read[p.id];btn.textContent=state.read[p.id]?'✓ Lido':'Marcar lido';btn.setAttribute('aria-pressed',String(!!state.read[p.id]));persist();progress()});head.append(btn);card.append(head,elt('h3','',p.title),elt('div','paper-meta',p.authors+' · '+p.year+' · '+p.venue),elt('p','',p.summary));const actions=elt('div','links');actions.append(link('Página acadêmica ↗',p.landing),link('PDF original ↗',p.pdf));card.append(actions);const detail=elt('details');detail.append(elt('summary','', 'Fichamento pessoal'));const textarea=elt('textarea','notes');textarea.placeholder='Hipótese, métodos, resultados, limites, ideias para pesquisa…';textarea.setAttribute('aria-label','Anotações: '+p.title);textarea.value=state.notes[p.id]||'';textarea.addEventListener('input',()=>{state.notes[p.id]=textarea.value;persist()});detail.append(textarea);card.append(detail);cards.append(card)}filter();progress()}function progress(){const n=papers.filter(p=>state.read[p.id]).length;document.getElementById('progress').textContent=n+'/'+papers.length;document.getElementById('progress-fill').style.width=(n/papers.length*100)+'%';document.getElementById('progress-bar').setAttribute('aria-valuenow',String(n))}function norm(s){return(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}function filter(){const search=norm(document.getElementById('search').value);const topic=document.getElementById('topic').value;const priority=document.getElementById('priority').value;let count=0;cards.querySelectorAll('.paper-card').forEach(card=>{let yes=norm(card.dataset.search).includes(search)&&(!topic||card.dataset.topic===topic)&&(!priority||card.dataset.priority===priority);card.hidden=!yes;if(yes)count++});document.getElementById('paper-count').textContent=count+' de '+papers.length+' publicações';document.getElementById('no-results').hidden=!!count}['search','topic','priority'].forEach(x=>document.getElementById(x).addEventListener('input',filter));function download(name,content,mime){const blob=new Blob([content],{type:mime||'text/plain;charset=utf-8'});const u=URL.createObjectURL(blob);const a=elt('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),300)}document.getElementById('export-notes').addEventListener('click',()=>{let lines=['# Atlas DARWIN — Meu caderno de leitura','','## Progresso'];for(const p of papers)lines.push('- ['+(state.read[p.id]?'x':' ')+'] '+p.title);lines.push('','## Fichamentos');for(const p of papers)lines.push('','### '+p.title,'',p.landing,'',state.notes[p.id]||'_Sem notas._');download('meu-caderno-darwin.md',lines.join('\n'),'text/markdown;charset=utf-8')});document.getElementById('export-csv').addEventListener('click',()=>{const cols=['id','title','authors','year','venue','topic','priority','summary','landing','pdf'];const esc=x=>'"'+String(x??'').replaceAll('"','""')+'"';download('catalogo-artigos-darwin.csv','\uFEFF'+cols.join(',')+'\r\n'+papers.map(p=>cols.map(k=>esc(p[k])).join(',')).join('\r\n'),'text/csv;charset=utf-8')});document.getElementById('export-bib').addEventListener('click',()=>{let b=papers.map(p=>'@misc{darwin'+p.id+',\n title={' +p.title+'},\n author={' +p.authors+'},\n year={' +p.year+'},\n howpublished={' +p.venue+'},\n url={' +p.landing+'},\n note={Verificar bibliografia completa no publicador}\n}').join('\n\n');download('referencias-darwin.bib',b)});const quiz=document.getElementById('quiz');quiz.addEventListener('submit',e=>{e.preventDefault();const answers=[1,1,2];let score=0,answered=0;answers.forEach((a,i)=>{let field=quiz.querySelectorAll('fieldset')[i];let selected=field.querySelector('input:checked');let div=field.querySelector('.feedback');if(!selected){div.dataset.result='missing';div.textContent='Selecione uma opção para verificar esta questão.';return}answered++;let good=Number(selected.value)===a;if(good)score++;div.dataset.result=good?'correct':'wrong';const explanations=['Fan-out dispara tarefas independentes; fan-in reúne seus resultados.','QA não autora exige um revisor diferente do autor, com evidências próprias.','CI PASS comprova somente os testes executados no SHA e ambiente registrados.'];div.textContent=(good?'Correto. ':'Ainda não. ')+explanations[i]});document.getElementById('quiz-score').textContent=score+'/3 corretas · '+answered+'/3 respondidas'});quiz.addEventListener('reset',()=>{document.getElementById('quiz-score').textContent='';quiz.querySelectorAll('.feedback').forEach(n=>{n.textContent='';delete n.dataset.result})});render()})();
-</script></body></html>
+/* Atlas DARWIN — somente interações locais; sem rede, autenticação ou analytics. */
+(()=>{
+ 'use strict';
+ const storeKey='atlas-darwin-research-2026'; // Compatível com a V3: preserva leituras e fichamentos.
+ let state={read:{},notes:{}};
+ let canStore=true;
+ try{
+   const old=JSON.parse(localStorage.getItem(storeKey)||'null');
+   if(old&&typeof old==='object')state={read:old.read||{},notes:old.notes||{}};
+ }catch{canStore=false}
+ const $=(selector)=>document.querySelector(selector);
+ const $$=(selector)=>[...document.querySelectorAll(selector)];
+ function save(){if(!canStore)return;try{localStorage.setItem(storeKey,JSON.stringify(state))}catch{canStore=false}}
+ function normalize(text){return String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
+ function updateProgress(){
+   const count=Object.values(state.read).filter(Boolean).length;
+   $$('.read-count').forEach(x=>x.textContent=String(count));
+   $$('.read-fraction').forEach(x=>x.textContent=`${count} de 15 artigos`);
+   $$('.progress-bar').forEach(x=>x.style.width=`${Math.min(count,15)*100/15}%`);
+   $$('.progress-track').forEach(x=>x.setAttribute('aria-valuenow',String(Math.min(count,15))));
+   $$('[data-reading-toggle]').forEach(button=>{
+      const id=button.dataset.readingToggle,read=!!state.read[id];
+      button.setAttribute('aria-pressed',String(read));
+      button.textContent=read?'✓ Lido':'Marcar como lido';
+   });
+ }
+ $$('[data-reading-toggle]').forEach(button=>button.addEventListener('click',()=>{
+   const id=button.dataset.readingToggle;state.read[id]=!state.read[id];save();updateProgress();
+   const msg=$('[data-reading-status]');if(msg)msg.textContent=state.read[id]?'Artigo marcado como lido.':'Marca de leitura desfeita.';
+ }));
+ updateProgress();
+ // Catálogo progressivo: os 15 resultados estão pré-renderizados e navegáveis sem JS.
+ const input=$('#catalog-search'),topic=$('#catalog-topic'),priority=$('#catalog-priority');
+ if(input&&topic&&priority){
+   function runFilter(){
+     let visible=0;
+     $$('.paper-list-item[data-search]').forEach(card=>{
+       const matches=normalize(card.dataset.search).includes(normalize(input.value))&&
+         (!topic.value||card.dataset.topic===topic.value)&&
+         (!priority.value||card.dataset.priority===priority.value);
+       card.hidden=!matches;if(matches)visible++;
+     });
+     const status=$('#catalog-count');if(status)status.textContent=`${visible} de 15 publicações`;
+     const empty=$('#catalog-empty');if(empty)empty.hidden=visible!==0;
+   }
+   [input,topic,priority].forEach(x=>x.addEventListener('input',runFilter));
+   const reset=$('#reset-catalog');if(reset)reset.addEventListener('click',()=>{input.value='';topic.value='';priority.value='';runFilter();input.focus()});
+   runFilter();
+ }
+ // Página individual e caderno. Salvamento sempre local, exportável e compatível com o Atlas V3.
+ $$('[data-note-for]').forEach(area=>{
+   const id=area.dataset.noteFor;area.value=state.notes[id]||'';
+   const status=area.parentElement.querySelector('.note-status');
+   area.addEventListener('input',()=>{state.notes[id]=area.value;save();if(status)status.textContent=canStore?'Anotação salva neste navegador.':'Armazenamento indisponível. Exporte seu caderno para não perder as notas.'});
+ });
+ function download(name,contents,mimetype){
+   const blob=new Blob([contents],{type:mimetype||'text/plain;charset=utf-8'});
+   const url=URL.createObjectURL(blob),link=document.createElement('a');
+   link.href=url;link.download=name;document.body.appendChild(link);link.click();link.remove();
+   setTimeout(()=>URL.revokeObjectURL(url),2000);
+ }
+ function notesMd(){
+   const lines=['# Meu caderno — Atlas DARWIN','','Exportado em: '+new Date().toLocaleString('pt-BR'),'','## Progresso'];
+   const db=$('#reading-source');
+   if(db){let papers;try{papers=JSON.parse(db.textContent)}catch{papers=[]}
+     papers.forEach(p=>lines.push(`- [${state.read[p.id]?'x':' '}] ${p.id} — ${p.title}`));
+     lines.push('','## Fichamentos','');
+     for(const p of papers){lines.push(`### ${p.id} — ${p.title}`,'',`Fonte: ${p.landing}`,'',state.notes[p.id]||'_Sem anotações._','')}
+   }else{
+     const id=$('[data-article-id]')?.dataset.articleId||'atual';
+     lines.push('',`## Artigo ${id}`,'',state.notes[id]||'_Sem anotações._');
+   }
+   return lines.join('\n')+'\n';
+ }
+ $$('[data-export-notes]').forEach(btn=>btn.addEventListener('click',()=>download('caderno-darwin.md',notesMd(),'text/markdown;charset=utf-8')));
+ // Caderno: informa quais dos 15 artigos foram marcados ou fichados.
+ const readingDb=$('#reading-source'),readingList=$('#reading-items');
+ if(readingDb&&readingList){
+   let papers=[];try{papers=JSON.parse(readingDb.textContent)}catch{}
+   for(const paper of papers){
+     if(!state.read[paper.id] && !state.notes[paper.id])continue;
+     const article=document.createElement('article');article.className='personal-entry';
+     const heading=document.createElement('h3');heading.textContent=paper.id+' · '+paper.title;
+     const link=document.createElement('a');link.href=paper.detail;link.textContent='Abrir ficha do artigo';
+     article.append(heading,link);
+     if(state.notes[paper.id]){let p=document.createElement('p');p.className='note-excerpt';p.textContent=state.notes[paper.id].slice(0,300);article.append(p)}
+     readingList.append(article);
+   }
+   if(!readingList.children.length)$('#reading-empty').hidden=false;
+ }
+ const quiz=$('#quiz-form');
+ if(quiz){
+   quiz.addEventListener('submit',event=>{
+     event.preventDefault();let correct=0,answered=0;
+     $$('.quiz-fieldset').forEach(field=>{
+       const chosen=field.querySelector('input[type="radio"]:checked');
+       const feedback=field.querySelector('.quiz-feedback');
+       const correctValue=field.dataset.correct;
+       const explanation=field.dataset.explanation;
+       field.removeAttribute('data-result');
+       if(!chosen){feedback.textContent='Selecione uma alternativa para conferir.';return}
+       answered++;
+       const ok=chosen.value===correctValue;
+       if(ok)correct++;
+       field.dataset.result=ok?'correct':'incorrect';
+       feedback.textContent=(ok?'Correto. ':'Não é essa alternativa. ')+explanation;
+     });
+     const score=$('#quiz-score');if(score)score.textContent=`${correct} de 3 corretas · ${answered} respondidas`;
+   });
+   const reset=$('#quiz-reset');if(reset)reset.addEventListener('click',()=>{
+     quiz.reset();$$('.quiz-fieldset').forEach(x=>{x.removeAttribute('data-result');x.querySelector('.quiz-feedback').textContent=''})
+     const score=$('#quiz-score');if(score)score.textContent='';
+   });
+ }
+})();
+
+</script>
+</body></html>
